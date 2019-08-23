@@ -1,0 +1,54 @@
+﻿@model GuestlogixDemo.Models.IndexViewModel
+
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container bg-light p-0">
+        <div class="row">
+            <form action="@Url.Action("Index", "Home")" method="get" class="col-12">
+                <div class="col-12 float-left text-center p-4 bg-dark text-light">
+                  <h3>Guestlogix Demo</h3>
+                    <h5><b>Jeegar Shah</b><br /><br /></h5>
+                    <h5>Shortest path between airports</h5>
+                    <p></p>
+                </div>
+                <div class="col-5 float-left p-2">
+                    <b>Origin</b>
+                    <br />
+                    <input type="text" class="form-control mt-2" name="origin" value="@Model.Origin" required/>
+                </div>
+                <div class="col-5 float-left p-2">
+                    <b>Destination</b>
+                    <br />
+                    <input type="text" class="form-control mt-2" name="destination" value="@Model.Destination" required/>
+                </div>
+                <div class="col-2 float-left p-2">
+                    <b>Search Mode</b>
+                    <br />
+                    <select class="form-control mt-2" name="testMode">
+                        <option value="false" @(Model.Mode ? "" : "selected")>Full</option>
+                        <option value="true"  @(Model.Mode ? "selected" : "")>Test</option>
+                    </select>
+                </div>
+                <div class="col-12 float-left text-center p-2">
+                    <input type="submit" class="btn btn-success" value="Find"/>
+                </div>
+            </form>
+            <div class="col-12 text-center pt-3">
+                @if (!Model.Result.IsEmpty())
+                {
+                    <h5>Result:</h5>
+                    <p><b>@Model.Result</b></p>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
